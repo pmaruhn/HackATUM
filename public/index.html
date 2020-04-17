@@ -2,6 +2,9 @@
 <html>
   <head>
     <script src="webcam.js"></script>
+    <!-- <script src="../functions/node_modules/chart.js/dist/Chart.js"></script> -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
     <title>ClassAct</title>
   </head>
   <body>
@@ -9,25 +12,22 @@
     <button type="button" onclick="startVideo()">Start Video</button>
     <button type="button" onclick="stopVideo()">Stop Video</button>
 
-    <div style="background-color: #cccccc; width: 100%;">
-      <iframe
-        src="https://onedrive.live.com/embed?cid=6C3AEB4557AFA5F7&amp;resid=6C3AEB4557AFA5F7%21116&amp;authkey=AJf7nLqebQWpdQc&amp;em=2&amp;wdAr=1.7777777777777777"
-        width="610px"
-        height="367px"
-        frameborder="0"
-        >Dies ist ein eingebettetes
-        <a target="_blank" href="https://office.com">Microsoft Office</a
-        >-Dokument, unterstützt von
-        <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe
-      >
-    </div>
+    <iframe
+      src="https://onedrive.live.com/embed?cid=6C3AEB4557AFA5F7&amp;resid=6C3AEB4557AFA5F7%21116&amp;authkey=AJf7nLqebQWpdQc&amp;em=2&amp;wdAr=1.7777777777777777"
+      width="610px"
+      height="367px"
+      frameborder="0"
+      >Dies ist ein eingebettetes
+      <a target="_blank" href="https://office.com">Microsoft Office</a
+      >-Dokument, unterstützt von
+      <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe
+    >
 
     <p id="data"></p>
-    <!-- <form id="frm1">
-      Username: <input type="text" name="name" /> Chat:
-      <input type="text" name="comment" />
-    </form> -->
-    <!-- <button onclick="turntoDatabase();">SUBMIT</button> -->
+    <div id="learnerCount"></div>
+    <canvas id="emotionBarChart" width="400" height="400"></canvas>
+    <script src="charts.js"></script>
+
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -45,16 +45,15 @@
     <script>
       // Initialiase array to Store current user states
       var currentStates = [];
-
-      // if (document.getElementById('data').innerHTML.length !== 0) {
-      //   document.getElementById('data').innerHTML = '';
-      // }
+      var learnerCount = 0;
+      var emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
 
       // Get learner states
       firebase
         .database()
         .ref('/learnerStates')
         .on('value', function (snapshot) {
+          console.log('New Data, updating...');
           var comments = [];
           var commentParent = document.getElementById('data');
           snapshot.forEach(function (childSnapshot) {
@@ -72,18 +71,43 @@
                 mood: datapoint.data.mood,
               });
             }
-
-            // var dataElm = document.createElement('div');
-            // dataElm.setAttribute('class', 'comment');
-            // dataElm.innerText =
-            //   encode(datapoint.data.mood) +
-            //   '		' +
-            //   encode(datapoint.data.timestamp);
-            // comments.push(dataElm);
+            learnerCount = currentStates.length;
+            document.getElementById('learnerCount').innerText = learnerCount;
           });
-          // commentParent.innerHTML = '';
-          // commentParent.append(...comments);
-          //return 0;
+
+          //Update Charts
+          emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
+          for (element in currentStates) {
+            switch (currentStates[element].mood) {
+              case 'angry':
+                emotionCounts[0] += 1;
+                break;
+              case 'disgust':
+                emotionCounts[1] += 1;
+                break;
+              case 'fear':
+                emotionCounts[2] += 1;
+                break;
+              case 'happy':
+                emotionCounts[3] += 1;
+                break;
+              case 'neutral':
+                emotionCounts[4] += 1;
+                break;
+              case 'sad':
+                emotionCounts[5] += 1;
+                break;
+              case 'surprise':
+                emotionCounts[6] += 1;
+                break;
+
+              default:
+                console.log('emotion missing');
+                break;
+            }
+          }
+          EmotionBarChartObject.data.datasets[0].data = emotionCounts;
+          EmotionBarChartObject.update();
         });
     </script>
   </body>
