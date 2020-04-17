@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="webcam.js"></script>
+    <title>ClassAct</title>
+  </head>
+  <body>
+    <video id="video" width="640" height="480" autoplay></video>
+    <button type="button" onclick="startVideo()">Start Video</button>
+    <button type="button" onclick="stopVideo()">Stop Video</button>
+
+    <div style="background-color: #cccccc; width: 100%;">
+      <iframe
+        src="https://onedrive.live.com/embed?cid=6C3AEB4557AFA5F7&amp;resid=6C3AEB4557AFA5F7%21116&amp;authkey=AJf7nLqebQWpdQc&amp;em=2&amp;wdAr=1.7777777777777777"
+        width="610px"
+        height="367px"
+        frameborder="0"
+        >Dies ist ein eingebettetes
+        <a target="_blank" href="https://office.com">Microsoft Office</a
+        >-Dokument, unterstützt von
+        <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe
+      >
+    </div>
+
+    <p id="data"></p>
+    <!-- <form id="frm1">
+      Username: <input type="text" name="name" /> Chat:
+      <input type="text" name="comment" />
+    </form> -->
+    <!-- <button onclick="turntoDatabase();">SUBMIT</button> -->
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyDnBx_oW7Li52EQUza4QJrL9Gy-0Qslw5M',
+        authDomain: 'classact-29dc0.firebaseapp.com',
+        databaseURL: 'https://classact-29dc0.firebaseio.com',
+        projectId: 'classact-29dc0',
+        storageBucket: 'classact-29dc0.appspot.com',
+        messagingSenderId: '286437080878',
+        appId: '1:286437080878:web:7633bf7c3bc5b5639b44bf',
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script>
+      // Initialiase array to Store current user states
+      var currentStates = [];
+
+      // if (document.getElementById('data').innerHTML.length !== 0) {
+      //   document.getElementById('data').innerHTML = '';
+      // }
+
+      // Get learner states
+      firebase
+        .database()
+        .ref('/learnerStates')
+        .on('value', function (snapshot) {
+          var comments = [];
+          var commentParent = document.getElementById('data');
+          snapshot.forEach(function (childSnapshot) {
+            var datapoint = childSnapshot.val();
+            var uniqueUser = true;
+            currentStates.forEach((element) => {
+              if (element.user == datapoint.user) {
+                element.mood = datapoint.data.mood;
+                uniqueUser = false;
+              }
+            });
+            if (uniqueUser) {
+              currentStates.push({
+                user: datapoint.user,
+                mood: datapoint.data.mood,
+              });
+            }
+
+            // var dataElm = document.createElement('div');
+            // dataElm.setAttribute('class', 'comment');
+            // dataElm.innerText =
+            //   encode(datapoint.data.mood) +
+            //   '		' +
+            //   encode(datapoint.data.timestamp);
+            // comments.push(dataElm);
+          });
+          // commentParent.innerHTML = '';
+          // commentParent.append(...comments);
+          //return 0;
+        });
+    </script>
+  </body>
+</html>
