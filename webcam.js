@@ -1,7 +1,34 @@
-var video = document.getElementById('video');
-if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-  navigator.mediaDevices.getUserMedia({ video: true }).then(function (stream) {
-    video.src = window.URL.createObjectURL(stream);
-    video.play();
+function startVideo() {
+  navigator.getMedia =
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia;
+
+  navigator.getMedia(
+    // constraints
+    { video: true, audio: false },
+
+    // success callback
+    function (stream) {
+      var video = document.getElementsByTagName('video')[0];
+      video.style.height = '640px';
+      video.style.width = '480px';
+      video.srcObject = stream;
+      video.play();
+    },
+    //handle error
+    function (error) {
+      console.log(error);
+    }
+  );
+}
+
+function stopVideo() {
+  video.srcObject.getTracks().forEach(function (track) {
+    track.stop();
   });
+
+  //var video = document.getElementsByTagName('video')[0];
+  video.style.height = '0px';
+  video.style.width = '0px';
 }
