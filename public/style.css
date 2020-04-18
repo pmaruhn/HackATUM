@@ -92,7 +92,7 @@ em {
 #presentation {
   width: 100%;
   position: absolute;
-  bottom: 0;
+  top: 0;
   right: 0;
   border-radius: 5px;
 }
