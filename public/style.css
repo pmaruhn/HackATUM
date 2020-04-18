@@ -37,7 +37,7 @@ em {
 
 #contents {
     width: 100%;
-    height: 100%;
+    height: calc(100% - 50px);
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -49,9 +49,10 @@ em {
 
 #shareArea {
     width: 50%;
-    height: 100%;
+    height: inherit;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 
 #shareControls {
@@ -83,7 +84,7 @@ em {
 
 #statsArea {
     width: 50%;
-    height: 100vh - 50px;
+    height: inherit;
     display: flex;
     justify-content: space-between;
     align-items: stretch;
@@ -104,6 +105,7 @@ em {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
+    min-height: 20%;
 }
 
 #chatArea {
@@ -118,6 +120,16 @@ em {
     margin-top: 15px;
     background-color: #50c9ab;
     border-radius: 5px 5px 0px 5px;
+    text-align: left;
+}
+
+.question > h4 {
+    margin: 0;
+    font-weight: 500;
+}
+
+.question > p {
+    margin: 0;
 }
 
 #learnerCount {
