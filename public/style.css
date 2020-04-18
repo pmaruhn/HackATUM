@@ -87,6 +87,7 @@ em {
   padding-top: 56.25%;
   background-color: teal;
   border-radius: 5px;
+  overflow: hidden;
 }
 
 #presentation {
