@@ -17,12 +17,6 @@ em {
     font-weight: 300;
 }
 
-iframe { 
-    margin: 10 auto;
-    width: 95%; 
-    height: auto; 
-}
-
 #contents {
     width: 100%;
     height: 100%;
@@ -42,11 +36,44 @@ iframe {
     font-size: 21pt;
 }
 
+.paddingArea {    
+    padding: 20px;
+}
+
 #shareArea {
     width: 50%;
     height: 100%;
     background-color: #cccccc;
+    display: flex;
+    flex-direction: column;
 }
+
+#shareControls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+#shareButtons > button {
+    width: 50px;
+    height: 50px;
+    background-color: white;
+    border-radius: 50%;
+    border: none;
+    box-shadow: 0 6px 10px 0 #666;
+  
+    text-align: center;
+    line-height: 50px;
+}
+#shareButtons >  button:hover {
+    box-shadow: 0 6px 14px 0 #666;
+    transform: scale(1.05);
+}
+
+.control-button-active {
+    color: #50c9ab;
+}
+
 
 #statsArea {
     width: 50%;

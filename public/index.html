@@ -4,6 +4,7 @@
   <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
   <link rel="stylesheet" type="text/css" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   
   <title>ClassAct</title>
   
@@ -12,10 +13,17 @@
   <div id="header">Class<em>act</em></div>
   
   <div id="contents">
-    <div id="shareArea">
+    <div class="paddingArea" id="shareArea">
+      <div id="shareControls">
+        <p>Currently sharing</p>
+        <div id="shareButtons">
+          <button class="control-button-active material-icons">desktop_windows</button>
+          <button class="control-button-active material-icons">mic</button>
+          <button class="control-button-active material-icons">videocam</button>
+        </div>
+      </div>
       <iframe
       src="https://onedrive.live.com/embed?cid=6C3AEB4557AFA5F7&amp;resid=6C3AEB4557AFA5F7%21116&amp;authkey=AJf7nLqebQWpdQc&amp;em=2&amp;wdAr=1.7777777777777777"
-      width="95%"
       frameborder="0"
       >Dies ist ein eingebettetes
       <a target="_blank" href="https://office.com">Microsoft Office</a
@@ -29,7 +37,7 @@
         
       </div>
       
-      <div id="statsArea">
+      <div class="paddingArea" id="statsArea">
         <p id="data"></p>
         <div id="learnerCount"></div>
         <div id="chartArea">
