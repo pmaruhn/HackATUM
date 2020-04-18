@@ -1,169 +1,172 @@
 * {
-    font-family: 'Alegreya Sans', sans-serif;
-    color: white;
+  font-family: 'Alegreya Sans', sans-serif;
+  color: white;
 }
 
 body {
-    background-color: #333333;
-    width: 100%;
-    height: 100vh;
-    margin: 0;
-    /* overflow: hidden;*/
+  background-color: #333333;
+  width: 100%;
+  height: 100vh;
+  margin: 0;
+  /* overflow: hidden;*/
 }
 
 h3 {
-    text-align: center;
-    text-transform: uppercase;
-    font-weight: 300;
-    letter-spacing: 5px;
-    flex-grow:1;
+  text-align: center;
+  text-transform: uppercase;
+  font-weight: 300;
+  letter-spacing: 5px;
+  flex-grow: 1;
 }
 
 em {
-    color: teal;
-    font-style: normal;
-    font-weight: 300;
+  color: teal;
+  font-style: normal;
+  font-weight: 300;
 }
 
 #header {
-    width: 100%;
-    height: 50px;
-    line-height: 50px;
-    text-align: center;
-    font-weight: 100;
-    text-transform: uppercase;
-    letter-spacing: 10px;
-    font-size: 21pt;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 10px;
+  font-size: 21pt;
 }
 
 #contents {
-    width: 100%;
-    height: calc(100% - 50px);
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+  width: 100%;
+  height: calc(100% - 50px);
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
-.paddingArea {    
-    padding: 20px;
+.paddingArea {
+  padding: 20px;
 }
 
 #shareArea {
-    width: 50%;
-    height: inherit;
-    display: flex;
-    flex-direction: column;
+  width: 50%;
+  height: inherit;
+  display: flex;
+  flex-direction: column;
 }
 
 #shareControls {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
 }
 
 #shareButtons > button {
-    width: 50px;
-    height: 50px;
-    background-color: white;
-    color: #aaaaaa;
-    border-radius: 50%;
-    border: none;
-    box-shadow: 2px 2px 5px 0 #000000;
-    text-align: center;
-    line-height: 50px;
-    margin: 0 5px;
+  width: 50px;
+  height: 50px;
+  background-color: white;
+  color: #aaaaaa;
+  border-radius: 50%;
+  border: none;
+  box-shadow: 2px 2px 5px 0 #000000;
+  text-align: center;
+  line-height: 50px;
+  margin: 0 5px;
 }
-#shareButtons >  button:hover {
-    transform: scale(1.05);
+#shareButtons > button:hover {
+  transform: scale(1.05);
 }
 
 .control-button-active {
-    color: teal !important;
+  color: teal !important;
 }
 
-#videoArea{
-    position: relative;
-    width: 100%;
-    padding-top: 56.25%;
-    background-color: teal;
-    border-radius: 5px;
+#videoArea {
+  position: relative;
+  width: 100%;
+  padding-top: 56.25%;
+  background-color: teal;
+  border-radius: 5px;
 }
 
 #presentation {
-    width: 100%;
-    position: absolute;
-    bottom:0;
-    right:0;
-    border-radius: 5px;
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  border-radius: 5px;
 }
 
 #video {
-    width: 30%;
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    z-index: 1;
-    border-radius: 5px;
+  width: 30%;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+  border-radius: 5px;
 }
 
 #statsArea {
-    width: 50%;
-    height: inherit;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
+  width: 50%;
+  height: inherit;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 }
 
 .statsField {
-    /* border: 1px solid white;*/
-    background-color: #444444;
-    border-radius: 5px;
-    padding: 0 15px;
-    text-align: center;
+  /* border: 1px solid white;*/
+  background-color: #444444;
+  border-radius: 5px;
+  padding: 0 15px;
+  text-align: center;
 }
 
 #chartArea {
-    width: 50%;
+  width: 60%;
+}
+#activityArea {
+  width: 25%;
 }
 
 #activeArea {
-    display: flex;
-    flex-direction: column;
-    min-height: calc(25% - 20px);
-    align-content: stretch;
-    margin-top: 20px;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(25% - 20px);
+  align-content: stretch;
+  margin-top: 20px;
+  justify-content: center;
+  align-items: center;
 }
 
 #chatArea {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
-    min-height: 75%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  min-height: 75%;
 }
 
 .question {
-    padding: 10px;
-    margin-top: 15px;
-    background-color: teal;
-    border-radius: 5px 5px 0px 5px;
-    text-align: left;
+  padding: 10px;
+  margin-top: 15px;
+  background-color: teal;
+  border-radius: 5px 5px 0px 5px;
+  text-align: left;
 }
 
 .question > h4 {
-    margin: 0;
-    font-weight: 500;
+  margin: 0;
+  font-weight: 500;
 }
 
 .question > p {
-    margin: 0;
+  margin: 0;
 }
 
 #learnerCount {
-    font-weight: 600;
-    font-size: 54px;
-    flex-grow: 5;
-    color: teal;
-    vertical-align: middle;
+  font-weight: 600;
+  font-size: 54px;
+  flex-grow: 5;
+  color: teal;
+  vertical-align: middle;
 }

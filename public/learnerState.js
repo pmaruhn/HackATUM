@@ -43,13 +43,13 @@ firebase
         case 'fear':
           emotionCounts[2] += 1;
           break;
-        case 'happy':
+        case 'sad':
           emotionCounts[3] += 1;
           break;
         case 'neutral':
           emotionCounts[4] += 1;
           break;
-        case 'sad':
+        case 'happy':
           emotionCounts[5] += 1;
           break;
         case 'surprise':

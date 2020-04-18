@@ -5,7 +5,7 @@ var ctxSleepingChart = document.getElementById('sleepingChart');
 var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
   type: 'bar',
   data: {
-    labels: ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise'],
+    labels: ['angry', 'disgust', 'fear', 'sad', 'neutral', 'happy', 'surprise'],
     datasets: [
       {
         data: [],
@@ -35,6 +35,7 @@ var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
         {
           gridLines: {
             display: false,
+            drawBorder: false,
           },
           ticks: {
             display: false,
@@ -100,8 +101,82 @@ var PleasantChartObject = new Chart(ctxPleasantChart, {
   },
 });
 
-var SleepingBarChartObject = new Chart(ctxSleepingChart, {
-  type: 'horizontalBar',
-  data: [1],
-  options: {},
+function randomValues(count, min, max) {
+  const delta = max - min;
+  return Array.from({ length: count }).map(() => Math.random() * delta + min);
+}
+
+const boxplotData = {
+  // define label tree
+  labels: [],
+  datasets: [
+    {},
+    {
+      label: 'Dataset 1',
+      backgroundColor: 'rgba(0,128,128,1)',
+      borderColor: 'white',
+      borderWidth: 1,
+      outlierColor: '#999999',
+      padding: 10,
+      itemRadius: 0,
+      data: [randomValues(100, -1, 1)],
+    },
+  ],
+};
+
+SleepingChartObject = new Chart(ctxSleepingChart, {
+  type: 'horizontalBoxplot',
+  data: boxplotData,
+  options: {
+    title: {
+      display: true,
+      text: '< Sleeping   -   Awake >',
+      fontColor: 'white',
+      fontSize: 14,
+      stepSize: 1,
+      fontFamily: "'Alegreya Sans', sans-serif",
+      position: 'bottom',
+    },
+    legend: {
+      display: false,
+      labels: {
+        fontColor: 'white',
+        fontSize: 18,
+        fontFamily: "'Alegreya Sans', sans-serif",
+      },
+    },
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            display: false,
+            drawBorder: false,
+          },
+          ticks: {
+            display: false,
+            fontColor: 'white',
+            fontSize: 18,
+            stepSize: 1,
+            fontFamily: "'Alegreya Sans', sans-serif",
+            beginAtZero: true,
+          },
+        },
+      ],
+      xAxes: [
+        {
+          display: false,
+          gridLines: {
+            display: false,
+          },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 14,
+            stepSize: 1,
+            fontFamily: "'Alegreya Sans', sans-serif",
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  },
 });
