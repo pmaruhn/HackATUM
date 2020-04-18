@@ -1,36 +1,42 @@
 * {
-  font-family: 'Alegreya Sans', sans-serif;
+    font-family: 'Alegreya Sans', sans-serif;
+    color: white;
+}
+
+body {
+    background-color: #333333;
 }
 
 em {
-  color: #50c9ab;
-  font-style: normal;
-  font-weight: 300;
+    color: #50c9ab;
+    font-style: normal;
+    font-weight: 300;
 }
 
-iframe {
-  margin: 10 auto;
-  width: 95%;
-  height: auto;
+iframe { 
+    margin: 10 auto;
+    width: 95%; 
+    height: auto; 
 }
 
 #header {
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  font-weight: 100;
-  text-transform: uppercase;
-  letter-spacing: 10px;
-  font-size: 21pt;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-weight: 100;
+    text-transform: uppercase;
+    letter-spacing: 10px;
+    font-size: 21pt;
 }
 
 #shareArea {
-  width: 50%;
-  float: left;
-  background-color: #cccccc;
+    width: 50%;
+    float: left;
+    background-color: #cccccc;
 }
 
 #statsArea {
-  width: 50%;
-  float: left;
+    width: 50%;
+    float: left;
 }
