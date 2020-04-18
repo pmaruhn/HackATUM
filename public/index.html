@@ -1,42 +1,56 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <link rel="stylesheet" type="text/css" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  
-  <title>ClassAct</title>
-  
-</head>
-<body onload="">
-  <div id="header">Class<em>act</em></div>
-  
-  <div id="contents">
-    <div class="paddingArea" id="shareArea">
-      <div id="shareControls">
-        <p>Currently sharing</p>
-        <div id="shareButtons">
-          <button class="control-button-active material-icons" id="togglePresentationButton" onclick="togglePresentation()">desktop_windows</button>
-          <button class="control-button-active material-icons" id="toggleAudioButton" onclick="toggleAudio()">mic</button>
-          <button class="control-button-active material-icons" id="toggleVideoButton" onclick="toggleVideo()">videocam</button>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
+
+    <title>ClassAct</title>
+  </head>
+  <body onload="">
+    <div id="header">Class<em>act</em></div>
+
+    <div id="contents">
+      <div class="paddingArea" id="shareArea">
+        <div id="shareControls">
+          <p>Currently sharing</p>
+          <div id="shareButtons">
+            <button
+              class="material-icons"
+              id="togglePresentationButton"
+              onclick="togglePresentation()"
+            >
+              desktop_access_disabled
+            </button>
+            <button
+              class="material-icons"
+              id="toggleAudioButton"
+              onclick="toggleAudio()"
+            >
+              mic_off
+            </button>
+            <button
+              class="material-icons"
+              id="toggleVideoButton"
+              onclick="toggleVideo()"
+            >
+              videocam_off
+            </button>
+          </div>
         </div>
-      </div>
-      <iframe
-      src="https://onedrive.live.com/embed?cid=6C3AEB4557AFA5F7&amp;resid=6C3AEB4557AFA5F7%21116&amp;authkey=AJf7nLqebQWpdQc&amp;em=2&amp;wdAr=1.7777777777777777"
-      frameborder="0"
-      >Dies ist ein eingebettetes
-      <a target="_blank" href="https://office.com">Microsoft Office</a
-        >-Dokument, unterstützt von
-        <a target="_blank" href="https://office.com/webapps">Office</a>.</iframe
-        >
-        
+
         <video id="video" autoplay></video>
-        <button type="button" onclick="showMyFace();startVideo()">Start Video</button>
-        <button type="button" onclick="stopVideo()">Stop Video</button>
-        
+        <video id="presentation" autoplay></video>
+        <audio id="audio" autoplay></audio>
       </div>
-      
+
       <div class="paddingArea" id="statsArea">
         <p id="data"></p>
         <div id="chartArea">
@@ -55,9 +69,9 @@
         </div>
       </div>
     </div>
-    
+
     <!-- Builtin Slido -->
-    
+
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -74,9 +88,8 @@
     </script>
     <script src="charts.js"></script>
     <script src="visuals.js"></script>
-    <script src= "learnerState.js"></script>
-    <script src= "questions.js"></script>
+    <script src="learnerState.js"></script>
+    <script src="questions.js"></script>
     <script src="webcam.js"></script>
   </body>
-  </html>
-  
+</html>

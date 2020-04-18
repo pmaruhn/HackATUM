@@ -1,18 +1,18 @@
+const presentationElem = document.getElementById('presentation');
+const audioElem = document.getElementById('audio');
+const videoElem = document.getElementById('video');
+
 function startVideo() {
-  navigator.getMedia =
+  navigator = navigator.getMedia =
     navigator.getUserMedia ||
     navigator.webkitGetUserMedia ||
     navigator.mozGetUserMedia;
   navigator.getMedia(
-    // constraints
-    { video: true, audio: true },
+    { video: true, audio: false },
     // success callback
     function (stream) {
-      var video = document.getElementsByTagName('video')[0];
-      video.style.height = '640px';
-      video.style.width = '480px';
-      video.srcObject = stream;
-      video.play();
+      videoElem.srcObject = stream;
+      videoElem.play();
     },
     //handle error
     function (error) {
@@ -21,18 +21,38 @@ function startVideo() {
   );
 }
 
-function stopVideo() {
-  video.srcObject.getTracks().forEach(function (track) {
-    track.stop();
-  });
+function startAudio(l) {
+  navigator = navigator.getMedia =
+    navigator.getUserMedia ||
+    navigator.webkitGetUserMedia ||
+    navigator.mozGetUserMedia;
+  navigator.getMedia(
+    { video: false, audio: true },
+    // success callback
+    function (stream) {
+      audioElem.srcObject = stream;
+      audioElem.play();
+    },
+    //handle error
+    function (error) {
+      console.log(error);
+    }
+  );
 }
 
-const videoElem = document.getElementById('video');
-const logElem = document.getElementById('log');
-const startElem = document.getElementById('start');
-const stopElem = document.getElementById('stop');
+function stopAudio() {
+  let tracks = audioElem.srcObject.getTracks();
 
-// Options for getDisplayMedia()
+  tracks.forEach((track) => track.stop());
+  audioElem.srcObject = null;
+}
+
+function stopVideo() {
+  let tracks = videoElem.srcObject.getTracks();
+
+  tracks.forEach((track) => track.stop());
+  videoElem.srcObject = null;
+}
 
 var displayMediaOptions = {
   video: {
@@ -41,32 +61,31 @@ var displayMediaOptions = {
   audio: false,
 };
 
-// // Set event listeners for the start and stop buttons
-// startElem.addEventListener(
-//   'click',
-//   function (evt) {
-//     startCapture();
-//   },
-//   false
-// );
-
-// stopElem.addEventListener(
-//   'click',
-//   function (evt) {
-//     stopCapture();
-//   },
-//   false
-// );
-
-async function togglePresentation() {
+async function startCapture() {
   // logElem.innerHTML = '';
 
   try {
-    videoElem.srcObject = await navigator.mediaDevices.getDisplayMedia(
+    presentationElem.srcObject = await navigator.mediaDevices.getDisplayMedia(
       displayMediaOptions
     );
     dumpOptionsInfo();
   } catch (err) {
     console.error('Error: ' + err);
   }
+}
+
+function stopCapture(evt) {
+  let tracks = presentationElem.srcObject.getTracks();
+
+  tracks.forEach((track) => track.stop());
+  presentationElem.srcObject = null;
+}
+
+function dumpOptionsInfo() {
+  const presentationTracks = presentationElem.srcObject.getVideoTracks()[0];
+
+  console.info('Track settings:');
+  console.info(JSON.stringify(presentationTracks.getSettings(), null, 2));
+  console.info('Track constraints:');
+  console.info(JSON.stringify(presentationTracks.getConstraints(), null, 2));
 }
