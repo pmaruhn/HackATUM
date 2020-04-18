@@ -20,9 +20,12 @@
 
     <div id="contents">
       <div class="paddingArea" id="shareArea">
-        <div id="shareControls">
-          <p>Currently sharing</p>
-          <div id="shareButtons">
+        <div id="videoArea">
+          <video id="video" autoplay></video>
+          <video id="presentation" autoplay></video>
+          <audio id="audio" autoplay></audio>
+        </div>
+        <div id="shareControls" class="shareButtons">
             <button
               class="material-icons"
               id="togglePresentationButton"
@@ -44,12 +47,6 @@
             >
               videocam_off
             </button>
-          </div>
-        </div>
-        <div id="videoArea">
-          <video id="video" autoplay></video>
-          <video id="presentation" autoplay></video>
-          <audio id="audio" autoplay></audio>
         </div>
       </div>
 

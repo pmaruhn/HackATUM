@@ -57,11 +57,11 @@ em {
 
 #shareControls {
   display: flex;
-  justify-content: space-between;
-  margin-bottom: 20px;
+  justify-content: space-evenly;
+  margin-top: 20px;
 }
 
-#shareButtons > button {
+.shareButtons > button {
   width: 50px;
   height: 50px;
   background-color: white;
@@ -73,7 +73,7 @@ em {
   line-height: 50px;
   margin: 0 5px;
 }
-#shareButtons > button:hover {
+.shareButtons > button:hover {
   transform: scale(1.05);
 }
 
