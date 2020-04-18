@@ -30,30 +30,53 @@ firebase
       document.getElementById('learnerCount').innerText = learnerCount;
     });
 
+    function addArray(array1, array2) {
+      var sum = array1.map(function (num, idx) {
+        return num + array2[idx];
+      });
+      return sum;
+    }
+
     //Update Charts
+    arousal = [0, 0, 0, 0]; // 'Intense', 'Pleasant', 'Mild', 'Unpleasant'
     emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
+    sleepiness = [];
     for (element in currentStates) {
       switch (currentStates[element].mood) {
         case 'angry':
           emotionCounts[0] += 1;
+          arousal = addArray(arousal, [0.5, 0.75, 0, 0]);
+          sleepiness.push(-0.4);
           break;
         case 'disgust':
           emotionCounts[1] += 1;
+          arousal = addArray(arousal, [0.5, 0, 0, 0.4]);
+          sleepiness.push(0.33);
           break;
         case 'fear':
           emotionCounts[2] += 1;
+          arousal = addArray(arousal, [0.75, 0, 0, 0.5]);
+          sleepiness.push(0.75);
           break;
         case 'sad':
           emotionCounts[3] += 1;
+          arousal = addArray(arousal, [0, 0, 0.3, 0.75]);
+          sleepiness.push(-0.5);
           break;
         case 'neutral':
           emotionCounts[4] += 1;
+          arousal = addArray(arousal, [0, 0, 0.5, 0]);
+          sleepiness.push(-0.75);
           break;
         case 'happy':
           emotionCounts[5] += 1;
+          arousal = addArray(arousal, [0.5, 0.8, 0, 0]);
+          sleepiness.push(0.75);
           break;
         case 'surprise':
           emotionCounts[6] += 1;
+          arousal = addArray(arousal, [0.8, 0.3, 0, 0]);
+          sleepiness.push(1);
           break;
 
         default:
@@ -63,4 +86,10 @@ firebase
     }
     EmotionBarChartObject.data.datasets[0].data = emotionCounts;
     EmotionBarChartObject.update();
+
+    PleasantChartObject.data.datasets[0].data = arousal;
+    PleasantChartObject.update();
+
+    SleepingChartObject.data.datasets[0].data = [sleepiness];
+    SleepingChartObject.update();
   });

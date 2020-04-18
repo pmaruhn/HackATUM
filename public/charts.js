@@ -72,7 +72,7 @@ var PleasantChartObject = new Chart(ctxPleasantChart, {
     datasets: [
       {
         backgroundColor: 'rgba(0,128,128,1)',
-        data: [20, 10, 4, 2],
+        data: [0, 0, 0, 0],
       },
     ],
   },
@@ -120,7 +120,7 @@ const boxplotData = {
       borderWidth: 1,
       outlierColor: '#999999',
       lowerColor: 'red',
-      data: [randomValues(100, -1, 1)],
+      data: [[0]],
     },
   ],
 };
