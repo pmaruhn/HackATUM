@@ -28,6 +28,14 @@
     <canvas id="emotionBarChart" width="400" height="400"></canvas>
     <script src="charts.js"></script>
 
+    <!-- Builtin Slido -->
+    <p id="questions"></p>
+    <!-- <form id="frm1">
+      Name: <input type="text" name="name" /> Question:
+      <input type="text" name="question" />
+    </form>
+    <button onclick="pushQuestionToDatabase();">Submit Question</button> -->
+
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -108,6 +116,52 @@
           }
           EmotionBarChartObject.data.datasets[0].data = emotionCounts;
           EmotionBarChartObject.update();
+        });
+
+      //Manage Questions
+      function pushQuestionToDatabase() {
+        var x = document.getElementById('frm1');
+        saveToFirebase(x.elements[0].value, x.elements[1].value);
+        x.elements[0].value = '';
+        x.elements[1].value = '';
+      }
+      function saveToFirebase(name, content) {
+        var questionObject = {
+          learner: name,
+          question: content,
+        };
+        firebase
+          .database()
+          .ref('/questions')
+          .push()
+          .set(questionObject)
+          .then(
+            function (snapshot) {
+              console.log('SUCCESS YAY'); // some success method
+            },
+            function (error) {
+              console.log('aw man not an error! ' + error);
+            }
+          );
+      }
+
+      firebase
+        .database()
+        .ref('/questions')
+        .on('value', function (snapshot) {
+          var questions = [];
+          var questionParent = document.getElementById('questions');
+          snapshot.forEach(function (childSnapshot) {
+            var childData = childSnapshot.val();
+            var questionELM = document.createElement('div');
+            questionELM.setAttribute('class', 'question');
+            questionELM.innerText =
+              childData.learner + ':		' + childData.question;
+            questions.push(questionELM);
+          });
+          questionParent.innerHTML = '';
+          questionParent.append(...questions);
+          return 0;
         });
     </script>
   </body>
