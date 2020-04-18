@@ -35,7 +35,12 @@ firebase
       var childData = childSnapshot.val();
       var questionELM = document.createElement('div');
       questionELM.setAttribute('class', 'question');
-      questionELM.innerText = childData.learner + ':		' + childData.question;
+      questionELM.innerHTML =
+        '<h4 class="chatLearner">' +
+        childData.learner +
+        '</h4> <p class="chatQuestion">' +
+        childData.question +
+        '</p>';
       questions.push(questionELM);
     });
     questionParent.innerHTML = '';
