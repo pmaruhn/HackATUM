@@ -53,7 +53,6 @@ em {
     height: inherit;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
 }
 
 #shareControls {
@@ -82,6 +81,30 @@ em {
     color: teal !important;
 }
 
+#videoArea{
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background-color: teal;
+    border-radius: 5px;
+}
+
+#presentation {
+    width: 100%;
+    position: absolute;
+    bottom:0;
+    right:0;
+    border-radius: 5px;
+}
+
+#video {
+    width: 30%;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: 1;
+    border-radius: 5px;
+}
 
 #statsArea {
     width: 50%;
