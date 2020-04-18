@@ -1,5 +1,6 @@
 var ctxEmotionBarChart = document.getElementById('emotionBarChart');
 var ctxPleasantChart = document.getElementById('pleasantChart');
+var ctxSleepingChart = document.getElementById('sleepingChart');
 
 var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
   type: 'bar',
@@ -22,6 +23,7 @@ var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
   },
   options: {
     legend: {
+      display: false,
       labels: {
         fontColor: 'white',
         fontSize: 18,
@@ -31,7 +33,11 @@ var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
     scales: {
       yAxes: [
         {
+          gridLines: {
+            display: false,
+          },
           ticks: {
+            display: false,
             fontColor: 'white',
             fontSize: 18,
             stepSize: 1,
@@ -42,6 +48,9 @@ var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
       ],
       xAxes: [
         {
+          gridLines: {
+            display: false,
+          },
           ticks: {
             fontColor: 'white',
             fontSize: 14,
@@ -68,12 +77,31 @@ var PleasantChartObject = new Chart(ctxPleasantChart, {
   },
   options: {
     legend: {
+      display: false,
       labels: {
         display: false,
       },
     },
     scale: {
-      gridLines: false,
+      pointLabels: {
+        fontColor: 'white',
+        fontSize: 14,
+        stepSize: 1,
+        fontFamily: "'Alegreya Sans', sans-serif",
+        beginAtZero: true,
+      },
+      ticks: {
+        display: false,
+      },
+      gridLines: {
+        display: false,
+      },
     },
   },
+});
+
+var SleepingBarChartObject = new Chart(ctxSleepingChart, {
+  type: 'horizontalBar',
+  data: [1],
+  options: {},
 });
