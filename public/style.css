@@ -8,7 +8,6 @@ body {
   width: 100%;
   height: 100vh;
   margin: 0;
-  overflow: hidden;
 }
 
 h3 {
@@ -147,7 +146,7 @@ em {
 #activeArea {
   display: flex;
   flex-direction: column;
-  min-height: calc(25% - 20px);
+  height: 175px;
   align-content: stretch;
   margin-top: 20px;
   justify-content: center;
@@ -158,7 +157,7 @@ em {
   display: flex;
   justify-content: space-between;
   flex-direction: column;
-  min-height: 70%;
+  height: calc(95% - 175px);
 }
 
 #questions {
