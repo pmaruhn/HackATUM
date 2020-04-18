@@ -56,9 +56,22 @@
       <div class="paddingArea" id="statsArea">
         <p id="data"></p>
         <div id="chartArea">
-          <canvas class="statsField" id="emotionBarChart"></canvas>
-          <canvas class="statsField" id="pleasantChart"></canvas>
-          <canvas class="statsField" id="sleepingChart"></canvas>
+          <div class="statsField chartField">
+            <h3>Emotions</h3>
+            <canvas id="emotionBarChart"></canvas>
+          </div>
+          <div class="statsField chartField">
+            <h3>Activity</h3>
+            <canvas id="pleasantChart"></canvas>
+          </div>
+          <div class="statsField chartField">
+            <h3>Sleepiness</h3>
+            <canvas id="sleepingChart" height=50></canvas>
+            <div id="sleepingLegend">
+              <span id="sleepingLabel">sleeping</span>
+              <span id="awakeLabel">awake</span>
+            </div>
+          </div>
         </div>
 
         <div id="activityArea">

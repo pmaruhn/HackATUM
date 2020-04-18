@@ -110,15 +110,16 @@ const boxplotData = {
   // define label tree
   labels: [],
   datasets: [
-    {},
     {
       label: 'Dataset 1',
       backgroundColor: 'rgba(0,128,128,1)',
-      borderColor: 'white',
+      borderColor: 'rgba(0,128,128,1)',
+      medianColor: 'white',
+      itemRadius: 0,
+      itemBackgroundColor: 'rgba(255,255,255,0.2)',
       borderWidth: 1,
       outlierColor: '#999999',
-      padding: 10,
-      itemRadius: 0,
+      lowerColor: 'red',
       data: [randomValues(100, -1, 1)],
     },
   ],
@@ -130,7 +131,6 @@ SleepingChartObject = new Chart(ctxSleepingChart, {
   options: {
     title: {
       display: true,
-      text: '< Sleeping   -   Awake >',
       fontColor: 'white',
       fontSize: 14,
       stepSize: 1,
@@ -170,7 +170,7 @@ SleepingChartObject = new Chart(ctxSleepingChart, {
           },
           ticks: {
             fontColor: 'white',
-            fontSize: 14,
+            fontSize: 10,
             stepSize: 1,
             fontFamily: "'Alegreya Sans', sans-serif",
             beginAtZero: true,
