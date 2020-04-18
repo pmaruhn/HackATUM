@@ -15,6 +15,7 @@ var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
           'rgba(75, 192, 192, 1)',
           'rgba(153, 102, 255, 1)',
           'rgba(255, 159, 64, 1)',
+          'rgba(155, 240, 86, 1)',
         ]
       },
     ],
