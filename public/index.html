@@ -17,9 +17,9 @@
       <div id="shareControls">
         <p>Currently sharing</p>
         <div id="shareButtons">
-          <button class="control-button-active material-icons">desktop_windows</button>
-          <button class="control-button-active material-icons">mic</button>
-          <button class="control-button-active material-icons">videocam</button>
+          <button class="control-button-active material-icons" id="togglePresentationButton" onclick="togglePresentation()">desktop_windows</button>
+          <button class="control-button-active material-icons" id="toggleAudioButton" onclick="toggleAudio()">mic</button>
+          <button class="control-button-active material-icons" id="toggleVideoButton" onclick="toggleVideo()">videocam</button>
         </div>
       </div>
       <iframe
@@ -39,17 +39,18 @@
       
       <div class="paddingArea" id="statsArea">
         <p id="data"></p>
-        <div id="learnerCount"></div>
         <div id="chartArea">
           <canvas id="emotionBarChart" width="100%"></canvas>
         </div>
 
-        <div id="chatArea">
-          <p id="questions"></p>
+        <div>
+          <div id="chatArea">
+            <p id="questions"></p>
+          </div>
+          <div id="learnerCount"></div>
         </div>
       </div>
     </div>
-    <script src="charts.js"></script>
     
     <!-- Builtin Slido -->
     
@@ -67,8 +68,10 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script src= 'learnerState.js'></script>
-    <script src= 'questions.js'></script>
+    <script src="charts.js"></script>
+    <script src="visuals.js"></script>
+    <script src= "learnerState.js"></script>
+    <script src= "questions.js"></script>
     <script src="webcam.js"></script>
   </body>
   </html>

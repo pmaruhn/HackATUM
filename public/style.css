@@ -43,7 +43,6 @@ em {
 #shareArea {
     width: 50%;
     height: 100%;
-    background-color: #cccccc;
     display: flex;
     flex-direction: column;
 }
@@ -58,20 +57,20 @@ em {
     width: 50px;
     height: 50px;
     background-color: white;
+    color: #aaaaaa;
     border-radius: 50%;
     border: none;
-    box-shadow: 0 6px 10px 0 #666;
-  
+    box-shadow: 2px 2px 5px 0 #000000;
     text-align: center;
     line-height: 50px;
+    margin: 0 5px;
 }
 #shareButtons >  button:hover {
-    box-shadow: 0 6px 14px 0 #666;
     transform: scale(1.05);
 }
 
 .control-button-active {
-    color: #50c9ab;
+    color: #50c9ab !important;
 }
 
 
