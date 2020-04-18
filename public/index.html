@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <script src="webcam.js"></script>
-    <!-- <script src="../functions/node_modules/chart.js/dist/Chart.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-
     <title>ClassAct</title>
+
   </head>
-  <body>
-    <video id="video" width="640" height="480" autoplay></video>
+  <body onload="showMyFace()">
+    <video id="video" autoplay></video>
+ </body>
     <button type="button" onclick="startVideo()">Start Video</button>
     <button type="button" onclick="stopVideo()">Stop Video</button>
 
@@ -30,12 +29,7 @@
 
     <!-- Builtin Slido -->
     <p id="questions"></p>
-    <!-- <form id="frm1">
-      Name: <input type="text" name="name" /> Question:
-      <input type="text" name="question" />
-    </form>
-    <button onclick="pushQuestionToDatabase();">Submit Question</button> -->
-
+   
     <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
     <script>
       // Initialize Firebase
@@ -50,119 +44,8 @@
       };
       firebase.initializeApp(config);
     </script>
-    <script>
-      // Initialiase array to Store current user states
-      var currentStates = [];
-      var learnerCount = 0;
-      var emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
-
-      // Get learner states
-      firebase
-        .database()
-        .ref('/learnerStates')
-        .on('value', function (snapshot) {
-          console.log('New Data, updating...');
-          var comments = [];
-          var commentParent = document.getElementById('data');
-          snapshot.forEach(function (childSnapshot) {
-            var datapoint = childSnapshot.val();
-            var uniqueUser = true;
-            currentStates.forEach((element) => {
-              if (element.user == datapoint.user) {
-                element.mood = datapoint.data.mood;
-                uniqueUser = false;
-              }
-            });
-            if (uniqueUser) {
-              currentStates.push({
-                user: datapoint.user,
-                mood: datapoint.data.mood,
-              });
-            }
-            learnerCount = currentStates.length;
-            document.getElementById('learnerCount').innerText = learnerCount;
-          });
-
-          //Update Charts
-          emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
-          for (element in currentStates) {
-            switch (currentStates[element].mood) {
-              case 'angry':
-                emotionCounts[0] += 1;
-                break;
-              case 'disgust':
-                emotionCounts[1] += 1;
-                break;
-              case 'fear':
-                emotionCounts[2] += 1;
-                break;
-              case 'happy':
-                emotionCounts[3] += 1;
-                break;
-              case 'neutral':
-                emotionCounts[4] += 1;
-                break;
-              case 'sad':
-                emotionCounts[5] += 1;
-                break;
-              case 'surprise':
-                emotionCounts[6] += 1;
-                break;
-
-              default:
-                console.log('emotion missing');
-                break;
-            }
-          }
-          EmotionBarChartObject.data.datasets[0].data = emotionCounts;
-          EmotionBarChartObject.update();
-        });
-
-      //Manage Questions
-      function pushQuestionToDatabase() {
-        var x = document.getElementById('frm1');
-        saveToFirebase(x.elements[0].value, x.elements[1].value);
-        x.elements[0].value = '';
-        x.elements[1].value = '';
-      }
-      function saveToFirebase(name, content) {
-        var questionObject = {
-          learner: name,
-          question: content,
-        };
-        firebase
-          .database()
-          .ref('/questions')
-          .push()
-          .set(questionObject)
-          .then(
-            function (snapshot) {
-              console.log('SUCCESS YAY'); // some success method
-            },
-            function (error) {
-              console.log('aw man not an error! ' + error);
-            }
-          );
-      }
-
-      firebase
-        .database()
-        .ref('/questions')
-        .on('value', function (snapshot) {
-          var questions = [];
-          var questionParent = document.getElementById('questions');
-          snapshot.forEach(function (childSnapshot) {
-            var childData = childSnapshot.val();
-            var questionELM = document.createElement('div');
-            questionELM.setAttribute('class', 'question');
-            questionELM.innerText =
-              childData.learner + ':		' + childData.question;
-            questions.push(questionELM);
-          });
-          questionParent.innerHTML = '';
-          questionParent.append(...questions);
-          return 0;
-        });
-    </script>
+    <script src= 'learnerState.js'></script>
+    <script src= 'questions.js'></script>
+    <script src="webcam.js"></script>
   </body>
 </html>
