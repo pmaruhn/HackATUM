@@ -91,7 +91,8 @@ em {
 }
 
 .statsField {
-    border: 1px solid white;
+    /* border: 1px solid white;*/
+    background-color: #444444;
     border-radius: 5px;
     padding: 0 15px;
     text-align: center;
@@ -103,16 +104,17 @@ em {
 
 #activeArea {
     display: flex;
-    justify-content: space-between;
     flex-direction: column;
-    min-height: 20%;
+    min-height: calc(25% - 20px);
+    align-content: stretch;
+    margin-top: 20px;
 }
 
 #chatArea {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
-    height: 75%;
+    min-height: 75%;
 }
 
 .question {
