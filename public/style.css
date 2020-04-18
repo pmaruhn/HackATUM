@@ -19,7 +19,7 @@ h3 {
 }
 
 em {
-    color: #50c9ab;
+    color: teal;
     font-style: normal;
     font-weight: 300;
 }
@@ -78,7 +78,7 @@ em {
 }
 
 .control-button-active {
-    color: #50c9ab !important;
+    color: teal !important;
 }
 
 
@@ -120,7 +120,7 @@ em {
 .question {
     padding: 10px;
     margin-top: 15px;
-    background-color: #50c9ab;
+    background-color: teal;
     border-radius: 5px 5px 0px 5px;
     text-align: left;
 }
@@ -137,4 +137,5 @@ em {
 #learnerCount {
     font-weight: 600;
     font-size: 54px;
+    color: teal;
 }
