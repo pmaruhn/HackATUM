@@ -3,37 +3,44 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 
 const audioContext = new AudioContext();
 
-// get the audio element
-const audioElement = document.createElement('audio');
-audioElement.src = '02.mp3';
-audioElement.crossOrigin = 'anonymous';
-audioElement.loop = true;
+// // get the audio element
+// const audioElement = document.createElement('audio');
+// audioElement.src = '02.mp3';
+// audioElement.crossOrigin = 'anonymous';
+// audioElement.loop = true;
 
-// pass it into the audio context
-const track = audioContext.createMediaElementSource(audioElement);
+// To solve CORS Error: https://stackoverflow.com/questions/37760695/firebase-storage-and-access-control-allow-origin/37765371#37765371
+// Create a reference with an initial file path and name
+var storage = firebase.storage();
 
-track.connect(audioContext.destination);
+//Play emotion sounds
+function playEmotion(emotion) {
+  var pathReference = storage.ref('sounds/emotions/' + emotion + '.m4a');
+  pathReference
+    .getDownloadURL()
+    .then(function (url) {
+      // `url` is the download URL
 
-// select our play button
-const playButton = document.getElementById('playbutton');
+      // This can be downloaded directly:
+      var xhr = new XMLHttpRequest();
+      xhr.responseType = 'blob';
+      xhr.onload = function (event) {
+        var blob = xhr.response;
+      };
+      xhr.open('GET', url);
+      xhr.send();
 
-// playButton.addEventListener(
-//     'click',
-//     function () {
-//         // check if context is in suspended state (autoplay policy)
-//         if (audioContext.state === 'suspended') {
-//             audioContext.resume();
-//         }
+      var audioElement = document.createElement('audio');
+      audioElement.src = url;
+      audioElement.crossOrigin = 'anonymous';
+      audioElement.play();
 
-//         // play or pause track depending on state
-//         if (this.dataset.playing === 'false') {
-//             console.log('play');
-//             audioElement.play();
-//             this.dataset.playing = 'true';
-//         } else if (this.dataset.playing === 'true') {
-//             audioElement.pause();
-//             this.dataset.playing = 'false';
-//         }
-//     },
-//     false
-// );
+      // pass it into the audio context
+      const track = audioContext.createMediaElementSource(audioElement);
+
+      track.connect(audioContext.destination);
+    })
+    .catch(function (error) {
+      // Handle any errors
+    });
+}

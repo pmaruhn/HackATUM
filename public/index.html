@@ -1,97 +1,111 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://unpkg.com/chartjs-chart-box-and-violin-plot@2/build/Chart.BoxPlot.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-<head>
-  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-  <script src="https://unpkg.com/chartjs-chart-box-and-violin-plot@2/build/Chart.BoxPlot.js"></script>
-  <link rel="stylesheet" type="text/css" href="style.css" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Alegreya+Sans:ital,wght@0,100;0,300;0,400;0,500;0,700;0,800;0,900;1,100;1,300;1,400;1,500;1,700;1,800;1,900&display=swap"
-    rel="stylesheet" />
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <title>ClassAct</title>
+  </head>
 
-  <title>ClassAct</title>
-</head>
+  <body onload="">
+    <div id="header">Class<em>act</em></div>
 
-<body onload="">
-  <div id="header">Class<em>act</em></div>
-
-  <div id="contents">
-    <div class="paddingArea" id="shareArea">
-      <div id="videoArea">
-        <video id="video" autoplay></video>
-        <video id="presentation" autoplay></video>
-        <audio id="audio" autoplay></audio>
-      </div>
-      <div id="shareControls" class="shareButtons">
-        <button class="material-icons" id="togglePresentationButton" onclick="togglePresentation()">
-          desktop_access_disabled
-        </button>
-        <button class="material-icons" id="toggleAudioButton" onclick="toggleAudio()">
-          mic_off
-        </button>
-        <button class="material-icons" id="toggleVideoButton" onclick="toggleVideo()">
-          videocam_off
-        </button>
-      </div>
-    </div>
-
-    <div class="paddingArea" id="statsArea">
-      <p id="data"></p>
-      <div id="chartArea">
-        <div class="statsField chartField">
-          <h3>Emotions</h3>
-          <canvas id="emotionBarChart"></canvas>
+    <div id="contents">
+      <div class="paddingArea" id="shareArea">
+        <div id="videoArea">
+          <video id="video" autoplay></video>
+          <video id="presentation" autoplay></video>
+          <audio id="audio" autoplay></audio>
         </div>
-        <div class="statsField chartField">
-          <h3>Activity</h3>
-          <canvas id="pleasantChart"></canvas>
+        <div id="shareControls" class="shareButtons">
+          <button
+            class="material-icons"
+            id="togglePresentationButton"
+            onclick="togglePresentation()"
+          >
+            desktop_access_disabled
+          </button>
+          <button
+            class="material-icons"
+            id="toggleAudioButton"
+            onclick="toggleAudio()"
+          >
+            mic_off
+          </button>
+          <button
+            class="material-icons"
+            id="toggleVideoButton"
+            onclick="toggleVideo()"
+          >
+            videocam_off
+          </button>
         </div>
-        <div class="statsField chartField">
-          <h3>Sleepiness</h3>
-          <canvas id="sleepingChart" height=50></canvas>
-          <div id="sleepingLegend">
-            <span id="sleepingLabel">sleeping</span>
-            <span id="awakeLabel">awake</span>
+      </div>
+
+      <div class="paddingArea" id="statsArea">
+        <p id="data"></p>
+        <div id="chartArea">
+          <div class="statsField chartField">
+            <h3>Emotions</h3>
+            <canvas id="emotionBarChart"></canvas>
+          </div>
+          <div class="statsField chartField">
+            <h3>Activity</h3>
+            <canvas id="pleasantChart"></canvas>
+          </div>
+          <div class="statsField chartField">
+            <h3>Sleepiness</h3>
+            <canvas id="sleepingChart" height="50"></canvas>
+            <div id="sleepingLegend">
+              <span id="sleepingLabel">sleeping</span>
+              <span id="awakeLabel">awake</span>
+            </div>
+          </div>
+        </div>
+
+        <div id="activityArea">
+          <div class="statsField" id="chatArea">
+            <h3>CHAT</h3>
+            <p id="questions"></p>
+          </div>
+          <div class="statsField" id="activeArea">
+            <h3>ACTIVE</h3>
+            <div id="learnerCount"></div>
           </div>
         </div>
       </div>
-
-      <div id="activityArea">
-        <div class="statsField" id="chatArea">
-          <h3>CHAT</h3>
-          <p id="questions"></p>
-        </div>
-        <div class="statsField" id="activeArea">
-          <h3>ACTIVE</h3>
-          <div id="learnerCount"></div>
-        </div>
-      </div>
     </div>
-  </div>
 
-  <!-- Builtin Slido -->
+    <!-- Builtin Slido -->
 
-  <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
-  <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: 'AIzaSyDnBx_oW7Li52EQUza4QJrL9Gy-0Qslw5M',
-      authDomain: 'classact-29dc0.firebaseapp.com',
-      databaseURL: 'https://classact-29dc0.firebaseio.com',
-      projectId: 'classact-29dc0',
-      storageBucket: 'classact-29dc0.appspot.com',
-      messagingSenderId: '286437080878',
-      appId: '1:286437080878:web:7633bf7c3bc5b5639b44bf',
-    };
-    firebase.initializeApp(config);
-  </script>
-  <script src="charts.js"></script>
-  <script src="visuals.js"></script>
-  <script src="learnerState.js"></script>
-  <script src="questions.js"></script>
-  <script src="webcam.js"></script>
-  <script src="sound.js"></script>
-</body>
-
+    <script src="https://www.gstatic.com/firebasejs/7.14.1/firebase.js"></script>
+    <script>
+      // Initialize Firebase
+      var config = {
+        apiKey: 'AIzaSyDnBx_oW7Li52EQUza4QJrL9Gy-0Qslw5M',
+        authDomain: 'classact-29dc0.firebaseapp.com',
+        databaseURL: 'https://classact-29dc0.firebaseio.com',
+        projectId: 'classact-29dc0',
+        storageBucket: 'classact-29dc0.appspot.com',
+        messagingSenderId: '286437080878',
+        appId: '1:286437080878:web:7633bf7c3bc5b5639b44bf',
+      };
+      firebase.initializeApp(config);
+    </script>
+    <script src="charts.js"></script>
+    <script src="visuals.js"></script>
+    <script src="sound.js"></script>
+    <script src="learnerState.js"></script>
+    <script src="questions.js"></script>
+    <script src="webcam.js"></script>
+  </body>
 </html>

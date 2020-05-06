@@ -93,11 +93,25 @@ firebase
     SleepingChartObject.data.datasets[0].data = [sleepiness];
     SleepingChartObject.update();
 
-    if (emotionCounts[0] == 2) {
-      console.log('playing sound now')
-      audioElement.play();
-    } else {
-      console.log('pausing sound now')
-      audioElement.pause();
+    if (emotionCounts[0] >= 1) {
+      playEmotion('angry');
+    }
+    if (emotionCounts[1] >= 1) {
+      playEmotion('disgust');
+    }
+    if (emotionCounts[2] >= 1) {
+      playEmotion('fear');
+    }
+    if (emotionCounts[3] >= 1) {
+      playEmotion('sad');
+    }
+    if (emotionCounts[4] >= 1) {
+      playEmotion('neutral');
+    }
+    if (emotionCounts[5] >= 1) {
+      playEmotion('happy');
+    }
+    if (emotionCounts[6] >= 1) {
+      playEmotion('surprise');
     }
   });
