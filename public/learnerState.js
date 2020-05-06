@@ -92,4 +92,12 @@ firebase
 
     SleepingChartObject.data.datasets[0].data = [sleepiness];
     SleepingChartObject.update();
+
+    if (emotionCounts[0] == 2) {
+      console.log('playing sound now')
+      audioElement.play();
+    } else {
+      console.log('pausing sound now')
+      audioElement.pause();
+    }
   });
