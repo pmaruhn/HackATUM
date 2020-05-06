@@ -4,7 +4,10 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 const audioContext = new AudioContext();
 
 // get the audio element
-const audioElement = document.getElementById('sounds');
+const audioElement = document.createElement('audio');
+audioElement.src = '02.mp3';
+audioElement.crossOrigin = 'anonymous';
+audioElement.loop = true;
 
 // pass it into the audio context
 const track = audioContext.createMediaElementSource(audioElement);
