@@ -65,6 +65,14 @@ playSound(
   playSound('sounds/ambient/keyboard.mp3', (loop = true), (volume = 0.3), (id = 'keyboard'));
   playSound('sounds/ambient/library.mp3', (loop = true), (volume = 0.5), (id = 'library'));
 
+function talkFaster() {
+  playSound('sounds/speed/faster.mp3', (loop = false), (volume = 1), (id = 'slower'));
+}
+
+function talkSlower() {
+  playSound('sounds/speed/slower.mp3', (loop = false), (volume = 1), (id = 'faster'));
+}
+
 // Mute toggle
 function  mute(track) {
   if (track.id == 'ambientToggle') {
