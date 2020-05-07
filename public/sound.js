@@ -38,7 +38,7 @@ function playSound(ref, loop = false, volume = 1, id = 'sound') {
       audioElement.loop = loop;
       audioElement.volume = volume;
       audioElement.play();
-      audioElement.muted = !document.getElementById(id + 'Toggle').checked;
+      // audioElement.muted = !document.getElementById(id + 'Toggle').checked;
 
       // pass it into the audio context
       const track = audioContext.createMediaElementSource(audioElement);
@@ -55,8 +55,8 @@ function playSound(ref, loop = false, volume = 1, id = 'sound') {
 //Start Ambient Sound
   playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1), (id = 'newspaper'));
   playSound('sounds/ambient/babble.mp3', (loop = true), (volume = 1), (id = 'babble'));
-  // playSound('sounds/ambient/keyboard.mp3', (loop = true), (volume = 0.3), (id = 'keyboard'));
-  // playSound('sounds/ambient/library.mp3', (loop = true), (volume = 0.5), (id = 'library'));
+  playSound('sounds/ambient/keyboard.mp3', (loop = true), (volume = 0.3), (id = 'keyboard'));
+  playSound('sounds/ambient/library.mp3', (loop = true), (volume = 0.5), (id = 'library'));
 
 // Mute toggle
 function  mute(track) {
