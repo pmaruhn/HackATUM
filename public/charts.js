@@ -1,6 +1,80 @@
+var coll = document.getElementsByClassName("collapsible");
+var i;
+
+for (i = 0; i < coll.length; i++) {
+  coll[i].addEventListener("click", function() {
+    this.classList.toggle("active");
+    var content = this.nextElementSibling;
+    if (content.style.display === "block") {
+      content.style.display = "none";
+    } else {
+      content.style.display = "block";
+    }
+  });
+}
+
+var ctxAgreementBarChart = document.getElementById('agreementBarChart');
 var ctxEmotionBarChart = document.getElementById('emotionBarChart');
 var ctxPleasantChart = document.getElementById('pleasantChart');
 var ctxSleepingChart = document.getElementById('sleepingChart');
+
+var AgreementBarChartObject = new Chart(ctxAgreementBarChart, {
+  type: 'bar',
+  data: {
+    labels: ['agree', 'disagree'],
+    datasets: [
+      {
+        data: [],
+        backgroundColor: [
+          'rgba(155, 240, 86, 1)',
+          'rgba(255, 99, 132, 1)',
+        ],
+      },
+    ],
+  },
+  options: {
+    legend: {
+      display: false,
+      labels: {
+        fontColor: 'white',
+        fontSize: 18,
+        fontFamily: "'Alegreya Sans', sans-serif",
+      },
+    },
+    scales: {
+      yAxes: [
+        {
+          gridLines: {
+            display: false,
+            drawBorder: false,
+          },
+          ticks: {
+            display: false,
+            fontColor: 'white',
+            fontSize: 18,
+            stepSize: 1,
+            fontFamily: "'Alegreya Sans', sans-serif",
+            beginAtZero: true,
+          },
+        },
+      ],
+      xAxes: [
+        {
+          gridLines: {
+            display: false,
+          },
+          ticks: {
+            fontColor: 'white',
+            fontSize: 14,
+            stepSize: 1,
+            fontFamily: "'Alegreya Sans', sans-serif",
+            beginAtZero: true,
+          },
+        },
+      ],
+    },
+  },
+});
 
 var EmotionBarChartObject = new Chart(ctxEmotionBarChart, {
   type: 'bar',

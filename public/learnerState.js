@@ -17,6 +17,7 @@ firebase
       currentStates.forEach((element) => {
         if (element.user == datapoint.user) {
           element.mood = datapoint.data.mood;
+          element.agreement = datapoint.data.agreement;
           uniqueUser = false;
         }
       });
@@ -24,6 +25,7 @@ firebase
         currentStates.push({
           user: datapoint.user,
           mood: datapoint.data.mood,
+          agreement: datapoint.data.agreement,
         });
       }
       learnerCount = currentStates.length;
@@ -38,10 +40,22 @@ firebase
     }
 
     //Update Charts
+    agreementCounts = [0,0]; //'agree', 'disagree'
     arousal = [0, 0, 0, 0]; // 'Intense', 'Pleasant', 'Mild', 'Unpleasant'
     emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
     sleepiness = [];
     for (element in currentStates) {
+      switch (currentStates[element].agreement) {
+        case 'agree':
+          agreementCounts[0]+=1;
+          break;
+        case 'disagree':
+          agreementCounts[1]+=1;
+          break;
+        default:
+          console.log('neutral agreement');
+          break;
+      }
       switch (currentStates[element].mood) {
         case 'angry':
           emotionCounts[0] += 1;
@@ -84,6 +98,9 @@ firebase
           break;
       }
     }
+    AgreementBarChartObject.data.datasets[0].data = agreementCounts;
+    AgreementBarChartObject.update();
+
     EmotionBarChartObject.data.datasets[0].data = emotionCounts;
     EmotionBarChartObject.update();
 

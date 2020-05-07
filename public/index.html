@@ -49,25 +49,31 @@
             videocam_off
           </button>
         </div>
+        <div class="statsField chartField">
+          <h3 class="collapsible">Agreement</h3>
+          <div class="content"><canvas id="agreementBarChart"></canvas></div>
+        </div>
       </div>
 
       <div class="paddingArea" id="statsArea">
         <p id="data"></p>
         <div id="chartArea">
           <div class="statsField chartField">
-            <h3>Emotions</h3>
-            <canvas id="emotionBarChart"></canvas>
+            <h3 class="collapsible">Emotions</h3>
+            <div class="content"><canvas id="emotionBarChart"></canvas></div>
           </div>
           <div class="statsField chartField">
-            <h3>Activity</h3>
-            <canvas id="pleasantChart"></canvas>
+            <h3 class="collapsible">Activity</h3>
+            <div class="content"><canvas id="pleasantChart"></canvas></div>
           </div>
           <div class="statsField chartField">
-            <h3>Sleepiness</h3>
-            <canvas id="sleepingChart" height="50"></canvas>
-            <div id="sleepingLegend">
-              <span id="sleepingLabel">sleeping</span>
-              <span id="awakeLabel">awake</span>
+            <h3 class="collapsible">Sleepiness</h3>
+            <div class="content">
+              <canvas id="sleepingChart" height="50"></canvas>
+              <div id="sleepingLegend">
+                <span id="sleepingLabel">sleeping</span>
+                <span id="awakeLabel">awake</span>
+              </div>
             </div>
           </div>
         </div>

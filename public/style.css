@@ -58,7 +58,7 @@ em {
 #shareControls {
   display: flex;
   justify-content: space-evenly;
-  margin-top: 20px;
+  margin: 20px 0;
 }
 
 .shareButtons > button {
@@ -121,6 +121,8 @@ em {
   border-radius: 5px;
   padding: 15px;
   text-align: center;
+  -webkit-transition: all 1s linear 0s;
+  transition: all 1s linear 0s;
 }
 
 #chartArea {
@@ -130,6 +132,28 @@ em {
 .chartField {
     margin-bottom: 25px;
 }
+
+/* collapsibles */
+.collapsible {
+  cursor: pointer;
+}
+
+.collapsible::after {
+  content: '\2212';
+  color: white;
+  font-weight: bold;
+  float: right;
+  margin-left: 5px;
+}
+
+.collapsible.active::after {
+  content: '\002B';
+}
+
+.content {
+  display: none;
+}
+
 
 #sleepingLegend {
     display: flex;
