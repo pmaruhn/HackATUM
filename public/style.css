@@ -139,7 +139,7 @@ em {
 }
 
 .collapsible::after {
-  content: '\2212';
+  content: '\002B';
   color: white;
   font-weight: bold;
   float: right;
@@ -147,7 +147,7 @@ em {
 }
 
 .collapsible.active::after {
-  content: '\002B';
+  content: '\2212';
 }
 
 .content {
@@ -159,9 +159,6 @@ em {
     display: flex;
     justify-content: space-between;
     align-content: stretch;
-}
-
-#sleepingLabel {
 }
 
 #activityArea {
