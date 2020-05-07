@@ -40,17 +40,17 @@ firebase
     }
 
     //Update Charts
-    agreementCounts = [0,0]; //'agree', 'disagree'
+    agreementCounts = [0, 0]; //'agree', 'disagree'
     arousal = [0, 0, 0, 0]; // 'Intense', 'Pleasant', 'Mild', 'Unpleasant'
     emotionCounts = [0, 0, 0, 0, 0, 0, 0]; // angry, disgust, fear, happy, neutral, sad, surprise
     sleepiness = [];
     for (element in currentStates) {
       switch (currentStates[element].agreement) {
         case 'agree':
-          agreementCounts[0]+=1;
+          agreementCounts[0] += 1;
           break;
         case 'disagree':
-          agreementCounts[1]+=1;
+          agreementCounts[1] += 1;
           break;
         default:
           console.log('neutral agreement');
@@ -111,24 +111,24 @@ firebase
     SleepingChartObject.update();
 
     if (emotionCounts[0] >= 1) {
-      playEmotion('angry');
+      // playSound('sounds/emotions/angry.m4a');
     }
     if (emotionCounts[1] >= 1) {
-      playEmotion('disgust');
+      // playSound('sounds/emotions/disgust.m4a');
     }
     if (emotionCounts[2] >= 1) {
-      playEmotion('fear');
+      // playSound('sounds/emotions/fear.m4a');
     }
     if (emotionCounts[3] >= 1) {
-      playEmotion('sad');
+      // playSound('sounds/emotions/sad.m4a');
     }
     if (emotionCounts[4] >= 1) {
-      playEmotion('neutral');
+      // playSound('sounds/emotions/neutral.m4a');
     }
     if (emotionCounts[5] >= 1) {
-      playEmotion('happy');
+      // playSound('sounds/emotions/happy.m4a');
     }
     if (emotionCounts[6] >= 1) {
-      playEmotion('surprise');
+      // playSound('sounds/emotions/surprise.m4a');
     }
   });

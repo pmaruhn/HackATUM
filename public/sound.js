@@ -14,8 +14,9 @@ const audioContext = new AudioContext();
 var storage = firebase.storage();
 
 //Play emotion sounds
-function playEmotion(emotion) {
-  var pathReference = storage.ref('sounds/emotions/' + emotion + '.m4a');
+function playSound(ref) {
+  console.log(ref);
+  var pathReference = storage.ref(ref);
   pathReference
     .getDownloadURL()
     .then(function (url) {

@@ -32,6 +32,7 @@ firebase
   .database()
   .ref('/questions')
   .on('value', function (snapshot) {
+    playSound('sounds/emotions/juntos.mp3');
     var lastQuestion = '';
     var questions = [];
     var questionParent = document.getElementById('questions');
