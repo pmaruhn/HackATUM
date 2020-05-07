@@ -14,7 +14,7 @@ const audioContext = new AudioContext();
 var storage = firebase.storage();
 
 //Play emotion sounds
-function playSound(ref, loop = false) {
+function playSound(ref, loop = false, volume = 1, id = 'sound') {
   var pathReference = storage.ref(ref);
   pathReference
     .getDownloadURL()
@@ -32,14 +32,18 @@ function playSound(ref, loop = false) {
 
       var audioElement = document.createElement('audio');
       audioElement.src = url;
+      audioElement.id = id;
       audioElement.crossOrigin = 'anonymous';
       audioElement.loop = loop;
+      audioElement.volume = volume;
       audioElement.play();
 
       // pass it into the audio context
       const track = audioContext.createMediaElementSource(audioElement);
 
       track.connect(audioContext.destination);
+
+      document.body.appendChild(audioElement);
     })
     .catch(function (error) {
       // Handle any errors
@@ -47,5 +51,10 @@ function playSound(ref, loop = false) {
 }
 
 //Start Ambient Sound
-playSound('sounds/ambient/newspaper.mp3', (loop = true));
-playSound('sounds/ambient/babble.mp3', (loop = true));
+playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1));
+playSound(
+  'sounds/ambient/babble.mp3',
+  (loop = true),
+  (volume = 1),
+  (id = 'babble')
+);

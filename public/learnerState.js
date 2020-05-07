@@ -30,6 +30,11 @@ firebase
       }
       learnerCount = currentStates.length;
       document.getElementById('learnerCount').innerText = learnerCount;
+      babbleaudio = document.getElementById('babble');
+      if (babbleaudio !== null) {
+        babbleaudio.volume = Math.min(Math.max(learnerCount / 10, 0), 1);
+        console.log(babbleaudio.volume);
+      }
     });
 
     function addArray(array1, array2) {
