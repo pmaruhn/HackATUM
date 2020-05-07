@@ -3,6 +3,7 @@ const AudioContext = window.AudioContext || window.webkitAudioContext;
 
 const audioContext = new AudioContext();
 
+
 // // get the audio element
 // const audioElement = document.createElement('audio');
 // audioElement.src = '02.mp3';
@@ -52,27 +53,19 @@ function playSound(ref, loop = false, volume = 1, id = 'sound') {
 }
 
 //Start Ambient Sound
-playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1), (id = 'ambient'));
-playSound(
-  'sounds/ambient/babble.mp3',
-  (loop = true),
-  (volume = 1),
-  (id = 'ambient')
-);
-playSound(
-  'sounds/ambient/keyboard.mp3',
-  (loop = true),
-  (volume = 1),
-  (id = 'ambient')
-);
-playSound(
-  'sounds/ambient/library.mp3',
-  (loop = true),
-  (volume = 1),
-  (id = 'ambient')
-);
+  playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1), (id = 'newspaper'));
+  playSound('sounds/ambient/babble.mp3', (loop = true), (volume = 1), (id = 'babble'));
+  // playSound('sounds/ambient/keyboard.mp3', (loop = true), (volume = 0.3), (id = 'keyboard'));
+  // playSound('sounds/ambient/library.mp3', (loop = true), (volume = 0.5), (id = 'library'));
 
 // Mute toggle
 function  mute(track) {
-  document.getElementById(track.id.replace('Toggle', '')).muted = !track.checked;
+  if (track.id == 'ambientToggle') {
+    document.getElementById('newspaper').muted = !track.checked;
+    document.getElementById('babble').muted = !track.checked;
+    document.getElementById('keyboard').muted = !track.checked;
+    document.getElementById('library').muted = !track.checked;
+  } else {
+    document.getElementById(track.id.replace('Toggle', '')).muted = !track.checked;
+  }
 }
