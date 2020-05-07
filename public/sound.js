@@ -15,7 +15,7 @@ const audioContext = new AudioContext();
 var storage = firebase.storage();
 
 //Play emotion sounds
-function playSound(ref, loop = false, volume = 1, id = 'sound') {
+function playSound(ref, loop = false, volume = 1, id = 'sound', muted = false) {
   var pathReference = storage.ref(ref);
   pathReference
     .getDownloadURL()
@@ -38,7 +38,7 @@ function playSound(ref, loop = false, volume = 1, id = 'sound') {
       audioElement.loop = loop;
       audioElement.volume = volume;
       audioElement.play();
-      // audioElement.muted = !document.getElementById(id + 'Toggle').checked;
+      audioElement.muted = muted;
 
       // pass it into the audio context
       const track = audioContext.createMediaElementSource(audioElement);
@@ -64,14 +64,8 @@ playSound(
   playSound('sounds/ambient/babble.mp3', (loop = true), (volume = 1), (id = 'babble'));
   playSound('sounds/ambient/keyboard.mp3', (loop = true), (volume = 0.3), (id = 'keyboard'));
   playSound('sounds/ambient/library.mp3', (loop = true), (volume = 0.5), (id = 'library'));
-
-function talkFaster() {
-  playSound('sounds/speed/faster.mp3', (loop = false), (volume = 1), (id = 'slower'));
-}
-
-function talkSlower() {
-  playSound('sounds/speed/slower.mp3', (loop = false), (volume = 1), (id = 'faster'));
-}
+  playSound('sounds/speed/faster.mp3', (loop = true), (volume = 1), (id = 'slower'), (muted = true));
+  playSound('sounds/speed/slower.mp3', (loop = true), (volume = 1), (id = 'faster'), (muted = true));
 
 // Mute toggle
 function  mute(track) {
