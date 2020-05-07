@@ -1,6 +1,27 @@
 var functions = firebase.functions();
 const ttsreq = firebase.functions().httpsCallable('ttsreq');
 
+// Reset Chat
+firebase.database().ref('/questions').remove();
+
+//Demo Questions
+chat = [
+  { name: 'Annika', content: 'Lernen ist so aufregend!' },
+  { name: 'Annika', content: 'Lernen!' },
+  { name: 'Annika', content: 'Leeeeeeerneeeeeen!' },
+];
+
+function postDemo(i) {
+  var delay = Math.floor(Math.random() * (40 - 5 + 1)) + 5;
+  setTimeout(function () {
+    saveToFirebase(chat[i].name, chat[i].content);
+  }, delay * 1000);
+}
+
+for (post in chat) {
+  postDemo(post);
+}
+
 //Manage Questions
 function pushQuestionToDatabase() {
   var x = document.getElementById('frm1');
@@ -32,7 +53,12 @@ firebase
   .database()
   .ref('/questions')
   .on('value', function (snapshot) {
-    playSound('sounds/notifications/juntos.mp3', (loop = false), (volume = 1), (id = 'notifications'));
+    playSound(
+      'sounds/notifications/juntos.mp3',
+      (loop = false),
+      (volume = 1),
+      (id = 'notifications')
+    );
     var lastQuestion = '';
     var questions = [];
     var questionParent = document.getElementById('questions');
