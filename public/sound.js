@@ -52,6 +52,13 @@ function playSound(ref, loop = false, volume = 1, id = 'sound') {
     });
 }
 
+playSound(
+  'sounds/notifications/juntos.mp3',
+  (loop = false),
+  (volume = 1),
+  (id = 'notifications')
+);
+
 //Start Ambient Sound
   playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1), (id = 'newspaper'));
   playSound('sounds/ambient/babble.mp3', (loop = true), (volume = 1), (id = 'babble'));
