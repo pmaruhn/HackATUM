@@ -52,12 +52,24 @@ function playSound(ref, loop = false, volume = 1, id = 'sound') {
 }
 
 //Start Ambient Sound
-playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1), (id = 'newspaper'));
+playSound('sounds/ambient/newspaper.mp3', (loop = true), (volume = 0.1), (id = 'ambient'));
 playSound(
   'sounds/ambient/babble.mp3',
   (loop = true),
   (volume = 1),
-  (id = 'babble')
+  (id = 'ambient')
+);
+playSound(
+  'sounds/ambient/keyboard.mp3',
+  (loop = true),
+  (volume = 1),
+  (id = 'ambient')
+);
+playSound(
+  'sounds/ambient/library.mp3',
+  (loop = true),
+  (volume = 1),
+  (id = 'ambient')
 );
 
 // Mute toggle
