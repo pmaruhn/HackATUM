@@ -6,9 +6,20 @@ firebase.database().ref('/questions').remove();
 
 //Demo Questions
 chat = [
-  { name: 'Annika', content: 'Lernen ist so aufregend!' },
-  { name: 'Annika', content: 'Lernen!' },
-  { name: 'Annika', content: 'Leeeeeeerneeeeeen!' },
+  {
+    name: 'Dwight',
+    content:
+      'Powerpoints are the peacocks of the business world; all show, no meat.',
+  },
+  {
+    name: 'Michael',
+    content: 'I don’t hate it. I just don’t like it at all and it’s terrible.',
+  },
+  { name: 'Angela', content: 'I normally don’t enjoy making people laugh.' },
+  {
+    name: 'Kelly',
+    content: 'I talk a lot, so I’ve learned to tune myself out.',
+  },
 ];
 
 function postDemo(i) {
