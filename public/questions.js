@@ -1,5 +1,5 @@
 var functions = firebase.functions();
-const tts = firebase.functions().httpsCallable('tts');
+const ttsreq = firebase.functions().httpsCallable('ttsreq');
 
 //Manage Questions
 function pushQuestionToDatabase() {
@@ -52,7 +52,7 @@ firebase
     questionParent.append(...questions);
 
     //Read aloud question
-    tts(lastQuestion)
+    ttsreq(lastQuestion)
       .then(function (result) {
         console.log(result.data);
         // Read result of the Cloud Function.
