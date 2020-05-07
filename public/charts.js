@@ -26,7 +26,7 @@ var AgreementBarChartObject = new Chart(ctxAgreementBarChart, {
       {
         data: [],
         backgroundColor: [
-          'rgba(155, 240, 86, 1)',
+          'rgba(126, 182, 81, 1)',
           'rgba(255, 99, 132, 1)',
         ],
       },

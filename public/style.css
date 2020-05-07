@@ -74,7 +74,7 @@ em {
   margin: 0 5px;
 }
 .shareButtons > button:hover {
-  transform: scale(1.05);
+  transform: scale(1.10);
 }
 
 .control-button-active {
@@ -229,7 +229,7 @@ em {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #ca2222;
+  background-color: rgba(255, 99, 132, 1);
   -webkit-transition: .4s;
   transition: .4s;
    border-radius: 34px;
@@ -249,7 +249,7 @@ em {
 }
 
 input:checked + .slider {
-  background-color: #2ab934;
+  background-color: rgb(126, 182, 81);
 }
 
 input:focus + .slider {
