@@ -34,10 +34,15 @@ em {
   text-transform: uppercase;
   letter-spacing: 10px;
   font-size: 21pt;
+  background-color: #333333;
+  position: fixed;
+  top: 0px;
+  z-index: 5;
 }
 
 #contents {
   width: 100%;
+  padding-top: 50px;
   height: calc(100% - 50px);
   display: flex;
   justify-content: space-between;
@@ -45,7 +50,7 @@ em {
 }
 
 .paddingArea {
-  padding: 20px;
+  padding: 0 20px;
 }
 
 #shareArea {
