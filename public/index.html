@@ -49,15 +49,29 @@
             videocam_off
           </button>
         </div>
-        <div class="statsField chartField">
-          <h3 class="collapsible">Agreement</h3>
-          <div class="content"><canvas id="agreementBarChart"></canvas></div>
+        <div>
+          <div>
+            <h4>ambient</h4>
+            <label class="switch"><input type="checkbox" id="babbleToggle" onclick="mute(this)" checked><div class="slider round"></div></label>
+          </div>
+          <div>
+            <h4>newspaper</h4>
+            <label class="switch"><input type="checkbox" id="newspaperToggle" onclick="mute(this)" checked><div class="slider round"></div></label>
+          </div>
+          <div>
+            <h4>notifications</h4>
+            <label class="switch"><input type="checkbox" id="notificationsToggle" onclick="mute(this)" checked><div class="slider round"></div></label>
+          </div>
         </div>
       </div>
 
       <div class="paddingArea" id="statsArea">
         <p id="data"></p>
         <div id="chartArea">
+        <div class="statsField chartField">
+          <h3 class="collapsible">Agreement</h3>
+          <div class="content"><canvas id="agreementBarChart"></canvas></div>
+        </div>
           <div class="statsField chartField">
             <h3 class="collapsible">Emotions</h3>
             <div class="content"><canvas id="emotionBarChart"></canvas></div>
