@@ -15,8 +15,8 @@
   "dependencies": {
     "@google-cloud/text-to-speech": "^2.3.0",
     "chart.js": "^2.9.3",
-    "firebase-admin": "^8.10.0",
-    "firebase-functions": "^3.6.1",
+    "firebase-admin": "^11.4.1",
+    "firebase-functions": "^3.24.1",
     "fs": "0.0.1-security",
     "util": "^0.12.3"
   },
